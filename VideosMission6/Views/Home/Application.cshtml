@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Application";
+}
+
+@model Application
+
+<h1>Dating Application</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="ApplicationID" />
+
+    <label asp-for="FirstName">First Name:</label>
+    <input asp-for="FirstName"/>
+    <br />
+    <label asp-for="LastName">Last Name:</label>
+    <input asp-for="LastName"/>
+    <br />
+    <label asp-for="Age">Age:</label>
+    <input asp-for="Age"/>
+    <br />
+    <label asp-for="PhoneNumber">Phone:</label>
+    <input asp-for="PhoneNumber" />
+    <br />    
+    <select asp-for="MajorId">
+        <option value="">Select a Major</option>
+        @foreach (Major m in ViewBag.Majors)
+        {
+            <option value="@m.MajorId">@m.MajorName</option>
+        }
+    </select>
+    <br />
+    <label asp-for="CreeperStalker">Are you a Creeper and/or Stalker?</label>
+    <select asp-for="CreeperStalker">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <button type="submit">Submit Application</button>
+
+    <div asp-validation-summary="All"></div>
+
+</form>
